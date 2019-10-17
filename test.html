@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        function Mobile(statusBattery, statusOnOff, drap, input, messagesSend) {
+            this.statusBattery = statusBattery;
+            this.statusOnOff = statusOnOff;
+            this.drap = drap;
+            this.input = input;
+            this.messagesSend = messagesSend;
+            this.testOnOff = function () {
+                return this.statusOnOff;
+            };
+            this.turnOn = function () {
+                this.statusOnOff = true;
+            };
+
+            this.turnOff = function () {
+                this.statusOnOff = false;
+            };
+            this.charging = function () {
+                return this.statusBattery = 100;
+            };
+            this.drafts = function () {
+                return this.drap;
+            };
+
+            this.sentMessages = function (mobile) {
+                if (this.statusOnOff) {
+                    this.statusBattery--;
+                    this.messagesSend.push(this.drap);
+                    return mobile.input.push(this.drap);
+                }
+            };
+            this.viewInput = function () {
+                if (this.statusOnOff) {
+                    this.statusBattery--;
+                    return this.input;
+                }
+            };
+
+            this.viewMessagesSend = function () {
+                if (this.statusOnOff) {
+                    this.statusBattery--;
+                    return this.messagesSend;
+                }
+            };
+
+        };
+        let drap1 = [];
+        let input1 = [];
+        let sentMessages1 = ["nd1"];
+
+        let drap2 = [];
+        let input2 = [];
+        let sentMessages2 = [];
+
+        let iphone = new Mobile(100, true, drap1, input1, sentMessages1);
+        let samsung = new Mobile(90, true, drap2, input2, sentMessages2);
+        iphone.drap = "hom nay abs";
+        iphone.sentMessages(samsung);
+        alert(samsung.viewInput());
+        alert(iphone.viewMessagesSend());
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        function Mobile(statusBattery, statusOnOff, drap, input, messagesSend) {
+            this.statusBattery = statusBattery;
+            this.statusOnOff = statusOnOff;
+            this.drap = drap;
+            this.input = input;
+            this.messagesSend = messagesSend;
+            this.testOnOff = function () {
+                return this.statusOnOff;
+            };
+            this.turnOn = function () {
+                this.statusOnOff = true;
+            };
+
+            this.turnOff = function () {
+                this.statusOnOff = false;
+            };
+            this.charging = function () {
+                return this.statusBattery = 100;
+            };
+            this.drafts = function () {
+                return this.drap;
+            };
+            this.getMessages = function (mobile) {
+                if(this.statusOnOff) {
+                    this.statusBattery--;
+                    return this.input.push(mobile.drap);
+                }
+            };
+            this.sentMessages = function (mobile,content) {
+                if(this.statusOnOff){
+                    this.statusBattery--;
+                this.messagesSend.push(content);
+                return mobile.input.push(content);
+                }
+            };
+            this.viewInput = function () {
+                if(this.statusOnOff) {
+                    this.statusBattery--;
+                    return this.input;
+                }
+            };
+
+            this.viewMessagesSend = function () {
+                if(this.statusOnOff) {
+                    this.statusBattery--;
+                    return this.messagesSend;
+                }
+            };
+
+        };
+        let input1 = [];
+        let sentMessages1 = ["nd1"];
+        let input2 = [];
+        let sentMessages2 = [];
+
+        let iphone = new Mobile(100, true, 'Chao a', input1, sentMessages1);
+        let samsung = new Mobile(90, true, '1', input2, sentMessages2);
+
+        iphone.sentMessages(samsung,"gui roi");
+        alert(samsung.viewInput());
+        alert(iphone.viewMessagesSend());
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

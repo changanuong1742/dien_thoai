@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+        var dungLuong = 100;
+
+        function Mobile(status) {
+            this.status = status;
+            this.getStatus = function () {
+                return this.status;
+            };
+            this.giamdungluong = function () {
+                dungLuong--;
+            };
+            this.turnOn = function () {
+                this.status = true;
+                document.getElementById("show3").innerHTML = 'Đã Bật';
+            };
+
+            this.turnOff = function () {
+                this.status = false;
+                document.getElementById("show3").innerHTML = 'Đã Tắt';
+            };
+
+
+
+            this.bat_tat = function () {
+                if (this.status) {
+                    alert("Lighting");
+                } else {
+                    alert("Not lighting");
+                }
+            };
+
+        }
+
+        var mobile = new Mobile(true);
+
+
+        function HomThu() {
+            //may 1//
+            if (mobile.status) {
+                var thunhap = document.getElementById("thunhap").value;
+
+                var thudagui = document.getElementById("thudagui").value;
+                var thunhan2 = document.getElementById("thudagui2").value;
+
+                //may 2//
+                var thunhap2 = document.getElementById("thunhap2").value;
+                var thudagui2 = document.getElementById("thudagui2").value;
+                var thunhan1 = document.getElementById("thudagui").value;
+
+                document.getElementById("show").innerHTML = 'Thư Nháp: ' + thunhap + "<br/>" + ' Thư Đã gửi: ' + thudagui + "<br/>" + ' Hộp Thư Đến: ' + thudagui2 + "<br/>" + 'Dung Lượng Pin' +  dungLuong-- ;
+                document.getElementById("show2").innerHTML = 'Thư Nháp: ' + thunhap + "<br/>" + ' Thư Đã gửi: ' + thudagui2 + "<br/>" + ' Hộp Thư Đến: ' + thudagui + "<br/>" + 'Dung Lượng Pin' +  dungLuong-- ;
+            } else {
+                document.getElementById("show").innerHTML = 'bật điện thoại lên ';
+            }
+
+
+        }
+
+
+        function sacdt() {
+            dungLuong = 100;
+            document.getElementById("show3").innerHTML = 'Đã Sạc 100%';
+        }
+    </script>
+
+
+</head>
+<body>
+<button id="nhan_nut_bat" onclick="mobile.turnOn()">Bật Điện Thoại</button>
+<button id="nhan_nut_tat" onclick="mobile.turnOff()">Tắt Điện Thoại</button>
+<button id="sac" onclick="sacdt()">Sạc Điên Thoại</button>
+
+<h1> Điện Thoại 1</h1>
+<input id="thunhap" placeholder="Soạn Nháp">
+<input id="thudagui" placeholder="Soạn Tin Nhắn">
+<p id="show"></p>
+
+
+<button id="nhan_nut_info" onclick="HomThu()">Gửi Sang Máy 2</button>
+<h1> Điện Thoại 2</h1>
+<input id="thunhap2" placeholder="Soạn Nháp">
+<input id="thudagui2" placeholder="Soạn Tin Nhắn">
+<p id="thunhan2"></p>
+
+
+<button id="nhan_nut_info2" onclick="HomThu()">Gửi Sang Máy 1</button>
+
+
+<p id="show2"></p>
+<hr>
+<p id="show3"></p>
+</body>
+</html>
